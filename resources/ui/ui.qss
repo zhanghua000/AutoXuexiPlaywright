@@ -1,0 +1,51 @@
+*[main=true] {
+    border-color: darkgray;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: #f1f2f3;
+}
+
+QPushButton[control-buttons=true] {
+    border: none;
+    width: 20%;
+    height: 20%;
+}
+
+QPushButton#autoxuexiplaywright-title-control-close {
+    background: qradialgradient(cx: 0.5, cy: 0.5, radius: 0.5,
+                                fx: 0.5, fy: 0.5, stop: 0 red, stop: 0.8 red, stop: 1 transparent);
+}
+QPushButton#autoxuexiplaywright-title-control-close::hover {
+    background: qradialgradient(cx: 0.5, cy: 0.5, radius: 0.5,
+                                fx: 0.5, fy: 0.5, stop: 0 darkred, stop: 0.8 darkred, stop: 1 transparent);
+}
+
+QPushButton#autoxuexiplaywright-title-control-minimize {
+    background: qradialgradient(cx: 0.5, cy: 0.5, radius: 0.5,
+                                fx: 0.5, fy: 0.5, stop: 0 gray, stop: 0.8 gray, stop: 1 transparent);
+}
+QPushButton#autoxuexiplaywright-title-control-minimize:hover {
+    background: qradialgradient(cx: 0.5, cy: 0.5, radius: 0.5,
+                                fx: 0.5, fy: 0.5, stop: 0 black, stop: 0.8 black, stop: 1 transparent);
+}
+
+QPushButton#autoxuexiplaywright-title-control-ontop {
+    background: qradialgradient(cx: 0.5, cy: 0.5, radius: 0.5,
+                                fx: 0.5, fy: 0.5, stop: 0 gray, stop: 0.8 gray, stop: 1 transparent);
+}
+QPushButton#autoxuexiplaywright-title-control-ontop:hover {
+    background: qradialgradient(cx: 0.5, cy: 0.5, radius: 0.5,
+                                fx: 0.5, fy: 0.5, stop: 0 black, stop: 0.8 black, stop: 1 transparent);
+}
+
+QLabel#autoxuexiplaywright-title-title {
+    font-size: 30px;
+}
+
+QLabel#autoxuexiplaywright-title-score {
+    font-size: 15px;
+}
+QLabel#autoxuexiplaywright-settings-title {
+    font-size: 15px;
+}

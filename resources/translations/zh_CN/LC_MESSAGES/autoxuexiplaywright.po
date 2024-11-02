@@ -1,0 +1,456 @@
+# Chinese (Simplified, China) translations for autoxuexiplaywright.
+# Copyright (C) 2024 AutoXuexiPlaywright
+# This file is distributed under the same license as the autoxuexiplaywright
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: autoxuexiplaywright 4.0.0\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-11-01 21:02+0800\n"
+"PO-Revision-Date: 2024-10-04 20:09+0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_Hans_CN\n"
+"Language-Team: zh_Hans_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: src/autoxuexiplaywright/__main__.py:34
+msgid "If enable gui mode."
+msgstr "是否启用 GUI 模式。"
+
+#: src/autoxuexiplaywright/__main__.py:40
+msgid "The path to config file."
+msgstr "配置文件的路径。"
+
+#: src/autoxuexiplaywright/__main__.py:45
+msgid "If enable debug mode."
+msgstr "是否启用调试模式。"
+
+#: src/autoxuexiplaywright/__main__.py:84
+msgid "Using default config."
+msgstr "使用默认配置。"
+
+#: src/autoxuexiplaywright/__main__.py:88
+#, python-format
+msgid "Deserializing config from file %(config_path)s."
+msgstr "从文件 %(config_path)s 反序列化配置。"
+
+#: src/autoxuexiplaywright/__main__.py:104
+#, python-format
+msgid "GUI mode enabled: %(gui)s"
+msgstr "GUI 模式：%(gui)s"
+
+#: src/autoxuexiplaywright/config/utils.py:20
+#, python-format
+msgid "Failed to parse config because %(e)s"
+msgstr "因为 %(e)s 而解析配置失败"
+
+#: src/autoxuexiplaywright/event/event.py:75
+#, python-format
+msgid "Failed to invoke callback because %(e)s"
+msgstr "因为 %(e)s 而执行回调失败"
+
+#: src/autoxuexiplaywright/module/loader.py:16
+#, fuzzy, python-format
+msgid "Loading module %(name)s"
+msgstr "加载模块 %(name)s"
+
+#: src/autoxuexiplaywright/module/loader.py:20
+#, python-format
+msgid "Load module failed because %(e)s"
+msgstr "因为 %(e)s 而加载模块失败"
+
+#: src/autoxuexiplaywright/module/utils.py:32
+#, python-format
+msgid "Failed to create instance for %(name)s because %(e)s."
+msgstr "因为 %(e)s 创建 %(name)s 的实例失败。"
+
+#: src/autoxuexiplaywright/module/utils.py:38
+#, python-format
+msgid "Found obsolete module %(name)s by %(author)s."
+msgstr "找到来自 %(author)s 的过时模块 %(name)s。"
+
+#: src/autoxuexiplaywright/module/utils.py:43
+#, python-format
+msgid "Load module %(name)s by %(author)s successfully."
+msgstr "加载来自 %(author)s 的模块 %(name)s 成功。"
+
+#: src/autoxuexiplaywright/processor/__init__.py:61
+msgid "Failed to parse score value."
+msgstr "解析分数失败。"
+
+#: src/autoxuexiplaywright/processor/__init__.py:110
+msgid "Starting processing..."
+msgstr "正在开始处理。。。"
+
+#: src/autoxuexiplaywright/processor/__init__.py:134
+#, python-format
+msgid "Processing %(title)s with %(name)s..."
+msgstr "正在使用 %(name)s 处理 %(title)s。。。"
+
+#: src/autoxuexiplaywright/processor/__init__.py:150
+#, python-format
+msgid "Failed to finish tasks because %(e)s"
+msgstr "因为 %(e)s 而完成任务失败"
+
+#: src/autoxuexiplaywright/processor/__init__.py:154
+#: src/autoxuexiplaywright/processor/__init__.py:160
+#, python-format
+msgid "Removing temp dir %(path)s outside cache."
+msgstr "正在移除不在缓存中的临时文件夹 %(path)s。"
+
+#: src/autoxuexiplaywright/processor/__init__.py:164
+msgid "Processing completed."
+msgstr "处理完成。"
+
+#: src/autoxuexiplaywright/processor/answer_sources/sqlite.py:83
+#, python-format
+msgid "Querying answer for %(title)s..."
+msgstr "正在查询 %(title)s 的答案。。。"
+
+#: src/autoxuexiplaywright/processor/answer_sources/sqlite.py:88
+#, python-format
+msgid "Got raw answer %(raw)s in database."
+msgstr "在数据库中获得原始答案 %(raw)s。"
+
+#: src/autoxuexiplaywright/processor/answer_sources/sqlite.py:110
+msgid "Migrating from legacy database..."
+msgstr "正在从过时的数据库中迁移。。。"
+
+#: src/autoxuexiplaywright/processor/answer_sources/sqlite.py:122
+#, python-format
+msgid "Failed to migrate from legacy database because %(e)s."
+msgstr "因为 %(e)s 而无法从过时的数据库中迁移。"
+
+#: src/autoxuexiplaywright/processor/answer_sources/sqlite.py:128
+#, python-format
+msgid "Migration completed. We will remove 'answer' table in %(path)s."
+msgstr "迁移完成。我们将移除 %(path)s 中的 \"answer\" 表。"
+
+#: src/autoxuexiplaywright/processor/readers/simple_reader.py:72
+#, python-format
+msgid "Failed to read because %(e)s"
+msgstr "因为 %(e)s 而阅读失败"
+
+#: src/autoxuexiplaywright/processor/tasks/daily_test.py:51
+msgid "Processing daily test..."
+msgstr "正在处理每日答题。。。"
+
+#: src/autoxuexiplaywright/processor/tasks/login.py:67
+msgid "Login with cookie successfully."
+msgstr "使用 cookie 登录成功。"
+
+#: src/autoxuexiplaywright/processor/tasks/login.py:70
+msgid "Trying to login with QR code."
+msgstr "正在尝试使用二维码登录。"
+
+#: src/autoxuexiplaywright/processor/tasks/login.py:85
+msgid "Require scanning QR code with mobile app."
+msgstr "需要使用移动 app 扫描二维码。"
+
+#: src/autoxuexiplaywright/processor/tasks/news.py:79
+#, python-format
+msgid "Processing news %(title)s"
+msgstr "正在处理新闻 %(title)s"
+
+#: src/autoxuexiplaywright/processor/tasks/news.py:90
+msgid "No unread news found on this page, trying next page..."
+msgstr "当前页面没有找到未读的新闻，正在尝试下一页。。。"
+
+#: src/autoxuexiplaywright/processor/tasks/news.py:93
+msgid "No news can be read."
+msgstr "没有新闻可供阅读。"
+
+#: src/autoxuexiplaywright/processor/tasks/read.py:44
+#, python-format
+msgid "Failed to read content because %(e)s"
+msgstr "因为 %(e)s 而阅读内容失败"
+
+#: src/autoxuexiplaywright/processor/tasks/test.py:60
+#, python-format
+msgid "Question is: %(title)s"
+msgstr "问题：%(title)s"
+
+#: src/autoxuexiplaywright/processor/tasks/test.py:78
+#, python-format
+msgid "Available choices: %(choices)s"
+msgstr "可用选择：%(choices)s"
+
+#: src/autoxuexiplaywright/processor/tasks/test.py:89
+#, python-format
+msgid "Failed to choice the item with answer %(answer)s"
+msgstr "使用答案 %(answer)s 选择项目失败"
+
+#: src/autoxuexiplaywright/processor/tasks/test.py:99
+#, python-format
+msgid "Failed to fill the blank at %(position)d with answer %(answer)s"
+msgstr "使用答案 %(answer)s 填空 %(position)d 失败"
+
+#: src/autoxuexiplaywright/processor/tasks/test.py:123
+msgid "Still needs handling, continuing..."
+msgstr "仍然需要处理，正在继续。。。"
+
+#: src/autoxuexiplaywright/processor/tasks/test.py:126
+msgid "Handle test completed."
+msgstr "处理测试完成。"
+
+#: src/autoxuexiplaywright/processor/tasks/test.py:136
+#, python-format
+msgid "Checking blank at %(position)d..."
+msgstr "正在检查位于 %(position)d 的空白。。。"
+
+#: src/autoxuexiplaywright/processor/tasks/test.py:142
+#, python-format
+msgid "Filling blank with answer %(answer)s..."
+msgstr "正在使用答案 %(answer)s 填空。。。"
+
+#: src/autoxuexiplaywright/processor/tasks/test.py:155
+#, python-format
+msgid "Checking item at %(position)d..."
+msgstr "正在检查位于 %(position)d 的选项。。。"
+
+#: src/autoxuexiplaywright/processor/tasks/test.py:161
+#, python-format
+msgid "Choicing answer %(answer)s..."
+msgstr "正在使用答案 %(answer)s 选择。。。"
+
+#: src/autoxuexiplaywright/processor/tasks/test.py:179
+#, python-format
+msgid "Failed to get answer because %(e)s"
+msgstr "因为 %(e)s 而获取答案失败"
+
+#: src/autoxuexiplaywright/processor/tasks/test.py:189
+msgid "No answer can be found from source, trying to get from page tips..."
+msgstr "从来源不能获取到答案，正在尝试从页面提示中获取。。。"
+
+#: src/autoxuexiplaywright/processor/tasks/test.py:202
+#, python-format
+msgid "Found tip %(tip)s."
+msgstr "找到提示 %(tip)s。"
+
+#: src/autoxuexiplaywright/processor/tasks/test.py:229
+msgid "Cannot found available next button or submit button."
+msgstr "不能找到可用的下一题或者提交按钮。"
+
+#: src/autoxuexiplaywright/processor/tasks/test.py:233
+msgid "Failed to handle captcha"
+msgstr "处理验证失败"
+
+#: src/autoxuexiplaywright/processor/tasks/test.py:237
+msgid "The answer to the question is wrong."
+msgstr "问题的答案不正确。"
+
+#: src/autoxuexiplaywright/processor/tasks/test.py:254
+#, python-format
+msgid "Failed to handle captcha because %(e)s"
+msgstr "因为 %(e)s 处理验证失败"
+
+#: src/autoxuexiplaywright/processor/tasks/test.py:272
+#, python-format
+msgid "Failed to record answer because %(e)s"
+msgstr "因为 %(e)s 记录答案失败"
+
+#: src/autoxuexiplaywright/processor/tasks/test.py:289
+#, python-format
+msgid "Rewriting judgement question result to %(result)s"
+msgstr "重写判断题答案为 %(result)s"
+
+#: src/autoxuexiplaywright/processor/tasks/test.py:295
+msgid "Yielding answers directly..."
+msgstr "直接生成答案。。。"
+
+#: src/autoxuexiplaywright/processor/tasks/video.py:79
+#, python-format
+msgid "Processing video %(title)s"
+msgstr "正在处理视频 %(title)s"
+
+#: src/autoxuexiplaywright/processor/tasks/video.py:90
+msgid "No unread video on this page, trying next page..."
+msgstr "当前页面没有找到未读的视频，正在尝试下一页。。。"
+
+#: src/autoxuexiplaywright/processor/tasks/video.py:93
+msgid "No video can be read."
+msgstr "没有视频可供阅读。"
+
+#: src/autoxuexiplaywright/sdk/task.py:93
+msgid "__pre_handle() returns False."
+msgstr "__pre_handle() 返回 False。"
+
+#: src/autoxuexiplaywright/sdk/task.py:98
+msgid "_handle() returns False."
+msgstr "_handle() 返回 False。"
+
+#: src/autoxuexiplaywright/sdk/task.py:102
+#, python-format
+msgid "Failed to handle task because %(e)s"
+msgstr "因为 %(e)s 处理任务失败"
+
+#: src/autoxuexiplaywright/ui/qt/controlwidget.py:46
+msgid "Close"
+msgstr "关闭"
+
+#: src/autoxuexiplaywright/ui/qt/controlwidget.py:50
+msgid "Show minimized"
+msgstr "最小化"
+
+#: src/autoxuexiplaywright/ui/qt/controlwidget.py:54
+msgid "Toggle staying on top"
+msgstr "切换置顶"
+
+#: src/autoxuexiplaywright/ui/qt/operationwidget.py:22
+#: src/autoxuexiplaywright/ui/qt/operationwidget.py:55
+msgid "Start"
+msgstr "开始"
+
+#: src/autoxuexiplaywright/ui/qt/operationwidget.py:26
+#: src/autoxuexiplaywright/ui/qt/settingwindow.py:35
+msgid "Settings"
+msgstr "设置"
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:48
+msgid "Firefox"
+msgstr "Firefox"
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:49
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:59
+msgid "Chromium"
+msgstr "Chromium"
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:50
+msgid "WebKit"
+msgstr "WebKit"
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:53
+msgid "Microsoft Edge"
+msgstr "Microsoft Edge"
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:54
+msgid "Microsoft Edge Beta"
+msgstr "Microsoft Edge Beta"
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:55
+msgid "Microsoft Edge Dev"
+msgstr "Microsoft Edge Dev"
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:56
+msgid "Google Chrome"
+msgstr "Google Chrome"
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:57
+msgid "Google Chrome Beta"
+msgstr "Google Chrome Beta"
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:58
+msgid "Google Chrome Dev"
+msgstr "Google Chrome Dev"
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:60
+msgid "Chromium Beta"
+msgstr "Chromium Beta"
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:61
+msgid "Chromium Dev"
+msgstr "Chromium Dev"
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:114
+msgid "Browse File"
+msgstr "浏览文件"
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:133
+msgid "Browser:"
+msgstr "浏览器："
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:140
+msgid "Browser Channel:"
+msgstr "浏览器通道："
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:144
+msgid "Debug Mode:"
+msgstr "调试模式："
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:147
+msgid "GUI Mode:"
+msgstr "GUI 模式："
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:150
+msgid "Browser Executable Path:"
+msgstr "浏览器执行文件路径："
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:151
+msgid "Browse..."
+msgstr "浏览。。。"
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:161
+msgid "Proxy Server:"
+msgstr "代理服务器："
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:162
+msgid "Proxy Bypass:"
+msgstr "忽略代理："
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:163
+msgid "Proxy Username:"
+msgstr "代理用户名："
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:164
+msgid "Proxy Password:"
+msgstr "代理密码："
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:167
+msgid "Skipped items:"
+msgstr "跳过的项目："
+
+#: src/autoxuexiplaywright/ui/qt/settingconfigwidget.py:169
+msgid "Put items to be skipped one by one here."
+msgstr "将需要跳过的项目一行一个写在这里。"
+
+#: src/autoxuexiplaywright/ui/qt/settingoperationwidget.py:38
+msgid "Save"
+msgstr "保存"
+
+#: src/autoxuexiplaywright/ui/qt/settingoperationwidget.py:41
+msgid "Cancel"
+msgstr "取消"
+
+#: src/autoxuexiplaywright/ui/qt/window.py:91
+msgid "Procesing..."
+msgstr "处理中。。。"
+
+#: src/autoxuexiplaywright/ui/qt/window.py:170
+#: src/autoxuexiplaywright/ui/qt/window.py:230
+msgid "Ready"
+msgstr "就绪"
+
+#: src/autoxuexiplaywright/ui/qt/window.py:222
+msgid "Process completed."
+msgstr "处理完成。"
+
+#: src/autoxuexiplaywright/ui/qt/window.py:223
+#, python-format
+msgid "Used time: %(delta)s"
+msgstr "用时：%(delta)s"
+
+#: src/autoxuexiplaywright/ui/qt/window.py:236
+#, python-format
+msgid "Current status: %(status)s"
+msgstr "当前状态：%(status)s"
+
+#: src/autoxuexiplaywright/ui/qt/window.py:243
+#, python-format
+msgid ""
+"Current: %(current)d\n"
+"Total: %(total)d"
+msgstr ""
+"当前得分：%(current)d\n"
+"总分：%(total)d"
+
+#: src/autoxuexiplaywright/ui/tui/__init__.py:26
+#, python-format
+msgid "Please scan QR code at %(path)s to login."
+msgstr "请扫描位于 %(path)s 的二维码完成登录。"
+

@@ -1,3 +1,30 @@
+# Breaking changes since v3
+
+1. No sync api anymore, everything is async.
+
+2. Localization is provided by [gettext](https://docs.python.org/3/library/gettext.html) instead self-made.
+   But setting locale is removed, we use result from `locale.getlocale` directly now.
+
+3. Data storage is provided by [platformdirs](https://github.com/tox-dev/platformdirs) instead self-made.
+
+4. Module requires an api level at entrance decorator now. Most of the modules are also async.
+   The api level is defined in [semver](https://github.com/python-semver/python-semver) format.
+
+5. No manual input answer, please use a custom answer source module to provide your answer.
+
+6. Almost every widget has an id now, they may also have some extra property. This may help with theme developing.
+
+7. Downloading video of test is removed. It is too hard to maintain and it never works as expected.
+   Please use a custom ansewer source module to provide your answer directly.
+
+8. Log are storaged at state directory instead cache directory, please check document of platformdirs
+   to get actual path on your system.
+
+9. Modules in single file is removed, please see [here](./docs/modules/migrations.md) for migrations.
+
+10. You can try to use [uvloop](https://github.com/MagicStack/uvloop) for asyncio's event loop.
+   But this has not supported Windows yet.
+
 # Breaking changes since v2
 
 1. Module interface has changed.

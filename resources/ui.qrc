@@ -1,0 +1,7 @@
+<RCC>
+  <qresource>
+    <file alias="/ui.qss">ui/ui.qss</file>
+    <file alias="/icon.png">ui/icon.png</file>
+    <file alias="/icon.svg">ui/icon.svg</file>
+  </qresource>
+</RCC>

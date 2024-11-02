@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=AutoXuexiPlaywright
+Comment=Finish something boring
+Comment[zh_CN]=完成一些无聊的东西
+Exec=autoxuexiplaywright --gui
+Icon=org.AutoXuexiPlaywright.autoxuexiplaywright
+Terminal=false
+Categories=Network;Utility;Qt;

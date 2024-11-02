@@ -20,22 +20,10 @@ jobs:
                   echo github.event_name is ${{ github.event_name }}
             - name: Checkout
               uses: actions/checkout@v4
-            - name: Setup Python
-              uses: actions/setup-python@v5
-              with:
-                  python-version: '3.12'
-            - name: Setup Poetry
-              uses: Gr1N/setup-poetry@v9
-            - name: Remove custom pypi sources
-              # Custom sources are only helpful in China
-              run: |
-                  poetry source show | grep name | cut -d : -f 2 | while read -r source
-                  do
-                      poetry source remove $source
-                  done
-                  poetry lock
+            - name: Setup PDM
+              uses: pdm-project/setup-pdm@v4
             - name: Install depends
-              run: poetry install --with=dev --with=gui
+              run: pdm install --group=uvloop --group=gui --dev
             - name: Install Qt depends
               # See https://github.com/cbrnr/mnelab/issues/327#issuecomment-1074853392
               run: |
@@ -43,31 +31,19 @@ jobs:
                   sudo apt-get install -y \
                     libxcb-icccm4 libxcb-image0 libxcb-keysyms1 \
                     libxkbcommon-x11-0 xvfb libxcb-randr0 \
-                    libxcb-render-util0 libxcb-xinerama0 libegl1
+                    libxcb-render-util0 libxcb-xinerama0 libegl1 \
+                    libxcb-shape0 libxcb-cursor0
             - name: Run program tests
               env:
                 RUFF_OUTPUT_FORMAT: github
-              run: poetry run pytest
+              run: pdm run pytest
             - name: Build wheel
-              run: poetry build
-            - name: Build python-autoxuexiplaywright
-              id: arch-package
-              uses: ouuan/pkgbuild-action@v1.2.0
-              with:
-                  path: resources/makepkg/autoxuexiplaywright
-            - name: Build python-ffmpeg
-              id: arch-python-ffmpeg
-              uses: ouuan/pkgbuild-action@v1.2.0
-              with:
-                  path: resources/makepkg/python-ffmpeg-jonghwanhyeon
+              run: pdm build
             - name: Release
               uses: softprops/action-gh-release@v2
               if: github.ref_type  == 'tag'
               with:
-                  files: |
-                      dist/*
-                      ${{ steps.arch-package.outputs.pkgfile }}
-                      ${{ steps.arch-python-ffmpeg.outputs.pkgfile }}
+                  files: dist/*
                   generate_release_notes: true
 
     push-to-techxuexi:

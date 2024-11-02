@@ -1,92 +1,127 @@
-[tool.poetry]
+[project]
 name = "autoxuexiplaywright"
-version = "3.0.8"
 description = "A tool to finish something boring."
-authors = ["autoxuexiplaywright-dev <180894403+autoxuexiplaywright-dev@users.noreply.github.com>"]
-license = "GPL"
-packages = [{include = "autoxuexiplaywright"}]
+authors = [
+    {name = "autoxuexiplaywright-dev", email = "180894403+autoxuexiplaywright-dev@users.noreply.github.com"},
+]
+dependencies = [
+    "playwright>=1.46.0",
+    "deserializer @ git+https://github.com/arenekosreal/deserializer.git",
+    "platformdirs>=4.3.2",
+    "semver>=3.0.2",
+]
+requires-python = ">=3.12,<3.13"
+readme = "README.md"
+license = {text = "GPL-3.0-or-later"}
+dynamic = ["version"]
 
-[tool.poetry.scripts]
+[project.optional-dependencies]
+uvloop = [
+    "uvloop>=0.20.0",
+]
+gui = [
+    "pyside6>=6.7.2",
+]
+
+[project.scripts]
 autoxuexiplaywright = "autoxuexiplaywright.__main__:main"
 
-[[tool.poetry.source]]
-name = "bfsu"
-url = "https://mirrors.bfsu.edu.cn/pypi/web/simple"
-priority = "supplemental"
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
 
-[[tool.poetry.source]]
-name = "tuna"
-url = "https://pypi.tuna.tsinghua.edu.cn/simple"
-priority = "supplemental"
 
-[[tool.poetry.source]]
-name = "sjtu"
-url = "https://mirror.sjtu.edu.cn/pypi/web/simple"
-priority = "supplemental"
+[tool.pdm]
+distribution = true
 
-[[tool.poetry.source]]
-name = "PyPI"
-priority = "primary"
+[tool.pdm.version]
+source = "file"
+path = "src/autoxuexiplaywright/__init__.py"
 
-[tool.poetry.dependencies]
-python = ">=3.11,<3.13"
-pyzbar = "^0.1.9"
-qrcode = {extras = ["pil"], version = "^7.3.1"}
-playwright = "^1.46.0"
-m3u8 = "^6.0.0"
-python-magic = "^0.4.27"
-python-ffmpeg = {version = "^2.0.12", optional = true}
-
-[tool.poetry.group.gui]
-optional = true
-
-[tool.poetry.group.gui.dependencies]
-pyside6 = "^6.7.2"
-
-[tool.poetry.group.dev]
-optional = true
-
-[tool.poetry.group.dev.dependencies]
-pytest-asyncio = "^0.24.0"
-pytest-playwright = "^0.5.2"
-pytest-cov = "^5.0.0"
-pytest-ruff = "^0.4.1"
+[tool.pdm.dev-dependencies]
+test = [
+    "pytest-cov>=5.0.0",
+    "pytest-ruff>=0.4.1",
+    "pytest-playwright>=0.5.2",
+    "pytest-asyncio>=0.24.0",
+]
+build = [
+    "babel>=2.16.0",
+]
+[tool.pdm.scripts]
+_extract_gettext.cmd = [
+    "pybabel",
+    "extract",
+    "-k", "__",
+    "--no-default-keywords",
+    "--project=autoxuexiplaywright",
+    "--copyright-holder=AutoXuexiPlaywright",
+]
+# pdm run extract_pot --version=$(pdm show --version)
+extract_pot.composite = ["_extract_gettext -o resources/translations/autoxuexiplaywright.pot src/autoxuexiplaywright/"]
+extract_pot.help = "Generate/Update pot from source code."
+# pdm run init_po --locale=zh_CN
+init_po.cmd = [
+    "pybabel",
+    "init",
+    "-i", "resources/translations/autoxuexiplaywright.pot",
+    "-D", "autoxuexiplaywright",
+    "-d", "resources/translations",
+]
+init_po.help = "Initialize a new po from pot."
+# pdm run update_po --locale=zh_CN
+update_po.cmd = [
+    "pybabel",
+    "update",
+    "-i", "resources/translations/autoxuexiplaywright.pot",
+    "-D", "autoxuexiplaywright",
+    "-d", "resources/translations",
+    "--update-header-comment",
+]
+update_po.help = "Update existing po from pot."
+build_mo.cmd = [
+    "pybabel",
+    "compile",
+    "-D", "autoxuexiplaywright",
+    "-d", "resources/translations",
+]
+build_mo.help = "Build po."
+post_build_mo.call = "scripts.build:copy_mo"
+post_build_mo.help = "Triggered after build_mo is executed."
+build_qt_ui_rcc.cmd = [
+    "pyside6-rcc",
+    "--binary",
+    "--verbose",
+    "--output", "src/autoxuexiplaywright/resources/ui.rcc",
+    "resources/ui.qrc",
+]
+build_qt_ui_rcc.help = "Build Qt resources file."
+pre_build_assets.call = "os:makedirs('src/autoxuexiplaywright/resources', exist_ok = True)"
+pre_build_assets.help = "Triggered before build_assets is executed."
+build_assets.composite = ["build_mo", "build_qt_ui_rcc"]
+build_assets.help = "Build assets required."
+pre_build.composite = ["build_assets"]
+pre_build.help = "Triggered before build is executed."
+clean_assets.call = "shutil:rmtree('src/autoxuexiplaywright/resources')"
+clean_assets.help = "Clean built assets."
+clean.composite = ["clean_assets"]
+clean.help = "Clean built contents."
 
 [tool.basedpyright]
-venvPath="."
-venv=".venv"
-reportMissingImports = true
-pythonPlatform = "All"
-typeCheckingMode = "strict"
-useLibraryCodeForTypes = true
-# diagnostic rules
-strictListInference = true
-strictDictionaryInference = true
-strictSetInference = true
-reportMissingTypeStubs = "warning"
-reportImportCycles = true
-reportUninitializedInstanceVariable = "warning"
-reportCallInDefaultInitializer = "warning"
-reportImplicitStringConcatenation = true
-reportUnusedCallResult = "information"
-reportUnnecessaryTypeIgnoreComment = "information"
-reportImplicitOverride = "information"
-reportShadowedImports = "information"
+typeCheckingMode = "all"
 
 [tool.pytest.ini_options]
-addopts = "--cov=autoxuexiplaywright --ruff"
+addopts = "--cov=src/autoxuexiplaywright --ruff"
 required_plugins = "pytest-ruff pytest-cov"
 
 [tool.ruff]
-builtins = ["_"]
-line-length = 100
-extend-exclude = ["__pycache__"]
-output-format = "github"
-required-version = ">=0.3.4"
-target-version = "py311"
+extend-exclude = [
+    "__pycache__",
+    ".pdm-build",
+]
+output-format = "grouped"
 
 [tool.ruff.lint]
-preview = true
 select = [
     "F", # Pyflakes
     "E", "W", # pycodestyle, Error, Warning
@@ -116,78 +151,43 @@ select = [
     "FLY", # flynt
     "FURB", # refurb
     "LOG", # flake8-logging
-    "RUF" # Ruff specific
+    "RUF", # Ruff specific
 ]
 ignore = [
     "ANN101", # type for self
     "ANN102", # type for cls
-    "PLW0603", # global statements
-    "S311", # random is not secure
-    "FIX002" # todo is not critical
+    "FIX002", # todo is not critical,
+    "N813",   # camelCase to snake_case
 ]
 
 [tool.ruff.lint.per-file-ignores]
-# Import core or gui according to config
-"autoxuexiplaywright/__init__.py" = ["PLC0415"]
-# Function is too complex
-"autoxuexiplaywright/config.py" = ["PLR0912"]
-# classmethod returns instance
-# NoSuchEventException cannot be fixed because compatibility reason.
-"autoxuexiplaywright/events.py" = ["ANN206", "N818"]
-# Import ctypes only on Windows
-"autoxuexiplaywright/gui/__init__.py" = ["PLC0415"]
-# follow Qt's name style
-# Drawing UI requires many statements
-"autoxuexiplaywright/gui/*.py" = ["N815", "N802", "N806", "PLR0915", "PLR0914"]
-# _ObjectIDs, magic value
-"autoxuexiplaywright/gui/windows.py" = ["RUF012", "PLR6301", "PLR2004"]
-# NoSuchLanguageKeyException
-"autoxuexiplaywright/languages.py" = ["N818"]
-# Dynamic import objects
-"autoxuexiplaywright/processors/__init__.py" = ["PLC0415"]
-# Size of list, method is function
-# Shadows some built-in object
-"autoxuexiplaywright/processors/**.py" = ["PLR6301", "PLR2004", "A004", "A005"]
-# Nested block
-"autoxuexiplaywright/processors/*/read.py" = ["PLR1702"]
-# Dynamic import
-"autoxuexiplaywright/processors/*/test.py" = ["PLC0415"]
-# SQL is too long
-"autoxuexiplaywright/processors/common/answer/sources.py" = ["E501"]
-# playwright likes this
-"autoxuexiplaywright/processors/async_api/task.py" = ["ASYNC109"]
-# empty functions
-"autoxuexiplaywright/sdk/module.py" = ["B027"]
-# Too many nested blocks
-"autoxuexiplaywright/storage.py" = ["PLR1702"]
-# tests are usually using assert and private objects
-# pyright is not happy when using i.attr
-# test __eq__ function should not be changed to ==
-# we prefers @pytest.fixture() instead @pytest.fixture
-"tests/**.py" = ["S101", "PLC2701","B010", "PLC2801", "PT001"]
+# import rename does not rename original is liked by pyright
+"src/autoxuexiplaywright/**/*.py" = ["PLC0414"]
+# Use camelCase to follow PySide6's style.
+"src/autoxuexiplaywright/ui/qt/*.py" = ["N802", "N803", "N806", "N812", "N815"]
+# Too many branches
+"src/autoxuexiplaywright/ui/qt/qtranslucentbackgroundframelesswidget.py" = ["PLR0912"]
+# random is not secure
+"src/autoxuexiplaywright/processor/readers/simple_reader.py" = ["S311"]
 
 [tool.ruff.lint.flake8-annotations]
-allow-star-arg-any = true
 mypy-init-return = true
 suppress-dummy-args = true
 suppress-none-returning = true
 
+[tool.ruff.lint.flake8-gettext]
+extend-function-names = ["__"]
+
 [tool.ruff.lint.isort]
 force-single-line = true
 length-sort = true
+length-sort-straight = true
 lines-after-imports = 2
 no-sections = true
 
-[tool.ruff.lint.pycodestyle]
-max-doc-length = 100
-max-line-length = 100
-
 [tool.ruff.lint.pydocstyle]
 convention = "google"
+ignore-decorators = ["typing.overload"]
 
 [tool.ruff.format]
 docstring-code-format = true
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
