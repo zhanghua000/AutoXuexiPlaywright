@@ -69,6 +69,7 @@ class LoginTask(_Task):
 
         _logger.info(__("Trying to login with QR code."))
         qglogin = page.locator(self._QGLOGIN_SELECTOR).first
+        await qglogin.wait_for()
         await _expect(qglogin).to_be_visible()
         frame = qglogin.frame_locator(self._LOGIN_IFRAME_SELECTOR).first
         image = frame.locator(self._LOGIN_IFRAME_IMAGE_SELECTOR).first
