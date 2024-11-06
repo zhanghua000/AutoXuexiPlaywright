@@ -6,9 +6,9 @@ authors = [
 ]
 dependencies = [
     "playwright>=1.46.0",
-    "deserializer @ git+https://github.com/arenekosreal/deserializer.git",
     "platformdirs>=4.3.2",
     "semver>=3.0.2",
+    "pydantic>=2.9.2",
 ]
 requires-python = ">=3.12,<3.13"
 readme = "README.md"

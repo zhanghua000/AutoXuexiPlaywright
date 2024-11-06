@@ -6,8 +6,7 @@ import logging
 from pathlib import Path as _Path
 from argparse import ArgumentParser as _ArgumentParser
 from argparse import BooleanOptionalAction as _BooleanOptionalAction
-from deserializer import deserialize as _deserialize
-from deserializer import set_log_level as _deserialize_log_level
+from pydantic import TypeAdapter as _TypeAdapter
 from autoxuexiplaywright import APPNAME as _APPNAME
 from autoxuexiplaywright import __name__ as _logger_name
 from autoxuexiplaywright.config import Config as _Config
@@ -88,9 +87,8 @@ def main():
             __("Deserializing config from file %(config_path)s."),
             {"config_path": config_path},
         )
-        _deserialize_log_level("DEBUG" if args.debug else "INFO")
-        config = _deserialize(_Config, config_dict)
-    _deserialize_log_level("DEBUG" if config.debug else "INFO")
+        t = _TypeAdapter(_Config)
+        config = t.validate_python(config_dict)
     if isinstance(args.gui, bool):
         config.gui = args.gui
     if isinstance(args.debug, bool):
