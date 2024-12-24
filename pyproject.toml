@@ -5,22 +5,22 @@ authors = [
     {name = "autoxuexiplaywright-dev", email = "180894403+autoxuexiplaywright-dev@users.noreply.github.com"},
 ]
 dependencies = [
-    "playwright>=1.46.0",
-    "platformdirs>=4.3.2",
+    "playwright>=1.49.1",
+    "platformdirs>=4.3.6",
     "semver>=3.0.2",
-    "pydantic>=2.9.2",
+    "pydantic>=2.10.4",
 ]
-requires-python = ">=3.12,<3.13"
+requires-python = ">=3.12,<3.14"
 readme = "README.md"
 license = {text = "GPL-3.0-or-later"}
 dynamic = ["version"]
 
 [project.optional-dependencies]
 uvloop = [
-    "uvloop>=0.20.0",
+    "uvloop>=0.21.0",
 ]
 gui = [
-    "pyside6>=6.7.2",
+    "pyside6<6.8.1,>=6.8.0.2",
 ]
 
 [project.scripts]
@@ -30,6 +30,16 @@ autoxuexiplaywright = "autoxuexiplaywright.__main__:main"
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
+[dependency-groups]
+build = [
+    "babel>=2.16.0",
+]
+test = [
+    "pytest-cov>=6.0.0",
+    "pytest-ruff>=0.4.1",
+    "pytest-playwright>=0.6.2",
+    "pytest-asyncio>=0.25.0",
+]
 
 [tool.pdm]
 distribution = true
@@ -38,16 +48,6 @@ distribution = true
 source = "file"
 path = "src/autoxuexiplaywright/__init__.py"
 
-[tool.pdm.dev-dependencies]
-test = [
-    "pytest-cov>=5.0.0",
-    "pytest-ruff>=0.4.1",
-    "pytest-playwright>=0.5.2",
-    "pytest-asyncio>=0.24.0",
-]
-build = [
-    "babel>=2.16.0",
-]
 [tool.pdm.scripts]
 _extract_gettext.cmd = [
     "pybabel",
